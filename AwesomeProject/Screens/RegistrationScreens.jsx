@@ -34,6 +34,7 @@ const RegistrationScreens = () => {
               placeholder="Логін"
               textAlign="left"
               placeholderTextColor={"#bdbdbd"}
+              onChangeText={setText}
             />
             <TextInput
               style={styles.inputs}

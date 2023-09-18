@@ -7,6 +7,7 @@ import {
   TextInput,
   ImageBackground,
   TouchableOpacity,
+  
 } from "react-native";
 
 const LoginScreen = () => {
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    marginTop: 32,
+    marginTop:32,
   },
   div: {
     // flex:1,
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   firstInputs: {
+
     marginTop: 32,
   },
   lastInputs: {
@@ -116,15 +118,17 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     marginTop: 15,
   },
-  isAccount: {
-    marginTop: 16,
-    marginLeft: 4,
+  isAccount:{
+marginTop:16,
+ marginLeft:4,
   },
-  enter: {
+  enter:{
     fontFamily: "Roboto-Regular",
     fontSize: 16,
-    color: "#1B4371",
+    color:'#1B4371',
+   
   },
 });
 
 export default LoginScreen;
+
