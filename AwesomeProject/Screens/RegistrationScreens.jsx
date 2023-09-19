@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -6,6 +6,10 @@ import {
   TextInput,
   ImageBackground,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
   
 } from "react-native";
 
@@ -34,7 +38,7 @@ const RegistrationScreens = () => {
               >
             <TextInput
               style={[styles.inputs, styles.firstInputs]}
-              autoFocus={true}
+             
               keyboardType="default"
               placeholder="Логін"
               textAlign="left"
@@ -44,7 +48,7 @@ const RegistrationScreens = () => {
             />
             <TextInput
               style={styles.inputs}
-              autoFocus={true}
+              
               keyboardType="default"
               placeholder="Адреса електроної пошти"
               textAlign="left"
@@ -55,7 +59,7 @@ const RegistrationScreens = () => {
             />
             <TextInput
               style={[styles.inputs, styles.lastInputs]}
-              autoFocus={true}
+              
               keyboardType="default"
               placeholder="Пароль"
               textAlign="left"
