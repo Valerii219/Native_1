@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 const LoginScreen = () => {
-
+  const [text, setText] = useState("");
   return (
     <>
       <ImageBackground
@@ -26,6 +26,9 @@ const LoginScreen = () => {
             >
               Увійти
             </Text>
+            <KeyboardAvoidingView // визначаємо ОС та налаштовуємо поведінку клавіатури
+        behavior={Platform.OS == "height" ? "padding" : "height"}
+      >
             <TextInput
               style={[styles.inputs, styles.firstInputs]}
               autoFocus={true}
@@ -33,7 +36,9 @@ const LoginScreen = () => {
               placeholder="Адреса електроної пошти"
               textAlign="left"
               placeholderTextColor={"#bdbdbd"}
-            />
+              value={text}
+              onChangeText={setText}
+            /></KeyboardAvoidingView>
             <TextInput
               style={[styles.inputs, styles.lastInputs]}
               autoFocus={true}
@@ -41,6 +46,8 @@ const LoginScreen = () => {
               placeholder="Пароль"
               textAlign="left"
               placeholderTextColor={"#bdbdbd"}
+              value={text}
+              onChangeText={setText}
             />
             <TouchableOpacity style={styles.button} >
               <Text style={styles.sign}>Увійти</Text>
@@ -48,7 +55,7 @@ const LoginScreen = () => {
             <Text style={styles.enter}>
               Немає акаунту?
               <TouchableOpacity style={styles.isAccount} >
-                <Text style={styles.enter}>Зареєструватися</Text>
+                <Text style={styles.enter}>Зареєструватис</Text>
               </TouchableOpacity>
             </Text>
           </View>
