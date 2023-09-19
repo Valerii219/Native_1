@@ -10,9 +10,10 @@ import {
 } from "react-native";
 
 const RegistrationScreens = () => {
-  // const signIn = () => {
-  //   console.debug("Welcome!");
-  // };
+  const [name, setName] = useState("");
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <>
       <ImageBackground
@@ -20,13 +21,17 @@ const RegistrationScreens = () => {
         style={styles.imageBackground}
       >
         <View style={styles.back}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <Text
-              style={{ fontFamily: "Roboto-Black", fontSize: 30 }}
+              
               styles={styles.title}
             >
               Реєстрація
             </Text>
+            <KeyboardAvoidingView
+                behavior={Platform.OS == "android" ? "height" : "padding"}
+              >
             <TextInput
               style={[styles.inputs, styles.firstInputs]}
               autoFocus={true}
@@ -34,7 +39,8 @@ const RegistrationScreens = () => {
               placeholder="Логін"
               textAlign="left"
               placeholderTextColor={"#bdbdbd"}
-              onChangeText={setText}
+              value={name}
+              onChangeText={setName}
             />
             <TextInput
               style={styles.inputs}
@@ -43,6 +49,9 @@ const RegistrationScreens = () => {
               placeholder="Адреса електроної пошти"
               textAlign="left"
               placeholderTextColor={"#bdbdbd"}
+                value={email}
+                  onChangeText={setEmail}
+
             />
             <TextInput
               style={[styles.inputs, styles.lastInputs]}
@@ -51,7 +60,10 @@ const RegistrationScreens = () => {
               placeholder="Пароль"
               textAlign="left"
               placeholderTextColor={"#bdbdbd"}
-            />
+              secureTextEntry={true}
+                  value={password}
+                  onChangeText={setPassword}
+            /></KeyboardAvoidingView>
             <TouchableOpacity style={styles.button} >
               <Text style={styles.sign}>Зареєструватися</Text>
             </TouchableOpacity>
@@ -62,6 +74,7 @@ const RegistrationScreens = () => {
               </TouchableOpacity>
             </Text>
           </View>
+          </TouchableWithoutFeedback>
         </View>
       </ImageBackground>
     </>
@@ -109,9 +122,11 @@ const styles = StyleSheet.create({
   lastInputs: {
     marginBottom: 43,
   },
-  title: {
-    color: "#212121",
-  },
+  title:{color: "#212121",
+  fontFamily: "Roboto-Medium",
+  fontSize: 30},
+  
+
   button: {
     width: 343,
     height: 51,

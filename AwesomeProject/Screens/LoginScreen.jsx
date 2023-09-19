@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   View,
@@ -7,60 +7,71 @@ import {
   TextInput,
   ImageBackground,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
   
 } from "react-native";
 
 const LoginScreen = () => {
-  const [text, setText] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <>
       <ImageBackground
         source={require("../Image/bgImage.jpg")}
         style={styles.imageBackground}
       >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.back}>
+        
           <View style={styles.container}>
             <Text
-              style={{ fontFamily: "Roboto-Medium", fontSize: 30 }}
-              styles={styles.title}
+              // style={{  }}
+              style={styles.title}
             >
               Увійти
             </Text>
-            <KeyboardAvoidingView // визначаємо ОС та налаштовуємо поведінку клавіатури
-        behavior={Platform.OS == "height" ? "padding" : "height"}
-      >
-            <TextInput
-              style={[styles.inputs, styles.firstInputs]}
-              autoFocus={true}
-              keyboardType="default"
-              placeholder="Адреса електроної пошти"
-              textAlign="left"
-              placeholderTextColor={"#bdbdbd"}
-              value={text}
-              onChangeText={setText}
-            /></KeyboardAvoidingView>
-            <TextInput
-              style={[styles.inputs, styles.lastInputs]}
-              autoFocus={true}
-              keyboardType="default"
-              placeholder="Пароль"
-              textAlign="left"
-              placeholderTextColor={"#bdbdbd"}
-              value={text}
-              onChangeText={setText}
-            />
+            <KeyboardAvoidingView
+                behavior={Platform.OS == "android" ? "height" : "padding"}
+              >
+                <TextInput
+                  style={[styles.inputs, styles.firstInputs]}
+                  keyboardType="default"
+                  placeholder="Адреса електроної пошти"
+                  textAlign="left"
+                  placeholderTextColor={"#bdbdbd"}
+                  value={email}
+                  onChangeText={setEmail}
+                />
+                <TextInput
+                  style={[styles.inputs, styles.lastInputs]}
+                  keyboardType="default"
+                  placeholder="Пароль"
+                  textAlign="left"
+                  placeholderTextColor={"#bdbdbd"}
+                  secureTextEntry={true}
+                  value={password}
+                  onChangeText={setPassword}
+                />
+              </KeyboardAvoidingView>
             <TouchableOpacity style={styles.button} >
               <Text style={styles.sign}>Увійти</Text>
             </TouchableOpacity>
+            
             <Text style={styles.enter}>
               Немає акаунту?
               <TouchableOpacity style={styles.isAccount} >
-                <Text style={styles.enter}>Зареєструватис</Text>
+                <Text style={styles.enter}>Зареєструватися</Text>
               </TouchableOpacity>
             </Text>
           </View>
+          
         </View>
+        </TouchableWithoutFeedback>
       </ImageBackground>
+      
     </>
   );
 };
@@ -86,11 +97,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    marginTop:32,
+    
+   
   },
-  div: {
-    // flex:1,
-  },
+
   inputs: {
     backgroundColor: "#e8e8e8",
     marginBottom: 16,
@@ -109,6 +119,8 @@ const styles = StyleSheet.create({
   },
   title: {
     color: "#212121",
+    fontFamily: "Roboto-Medium",
+    fontSize: 30
   },
   button: {
     width: 343,
@@ -131,6 +143,7 @@ marginTop:16,
     fontFamily: "Roboto-Regular",
     fontSize: 16,
     color:'#1B4371',
+    marginTop:16,
    
   },
 });
