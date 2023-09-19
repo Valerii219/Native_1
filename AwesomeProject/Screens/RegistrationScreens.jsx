@@ -10,9 +10,9 @@ import {
 } from "react-native";
 
 const RegistrationScreens = () => {
-  const signIn = () => {
-    console.debug("Welcome!");
-  };
+  // const signIn = () => {
+  //   console.debug("Welcome!");
+  // };
   return (
     <>
       <ImageBackground
@@ -52,12 +52,12 @@ const RegistrationScreens = () => {
               textAlign="left"
               placeholderTextColor={"#bdbdbd"}
             />
-            <TouchableOpacity style={styles.button} onPress={signIn}>
+            <TouchableOpacity style={styles.button} >
               <Text style={styles.sign}>Зареєструватися</Text>
             </TouchableOpacity>
             <Text style={styles.enter}>
               Вже є акаунт?
-              <TouchableOpacity style={styles.isAccount} onPress={signIn}>
+              <TouchableOpacity style={styles.isAccount}>
                 <Text style={styles.enter}>Увійти</Text>
               </TouchableOpacity>
             </Text>

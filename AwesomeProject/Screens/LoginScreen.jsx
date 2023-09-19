@@ -11,9 +11,7 @@ import {
 } from "react-native";
 
 const LoginScreen = () => {
-  const signIn = () => {
-    console.debug("Welcome!");
-  };
+
   return (
     <>
       <ImageBackground
@@ -44,12 +42,12 @@ const LoginScreen = () => {
               textAlign="left"
               placeholderTextColor={"#bdbdbd"}
             />
-            <TouchableOpacity style={styles.button} onPress={signIn}>
+            <TouchableOpacity style={styles.button} >
               <Text style={styles.sign}>Увійти</Text>
             </TouchableOpacity>
             <Text style={styles.enter}>
               Немає акаунту?
-              <TouchableOpacity style={styles.isAccount} onPress={signIn}>
+              <TouchableOpacity style={styles.isAccount} >
                 <Text style={styles.enter}>Зареєструватися</Text>
               </TouchableOpacity>
             </Text>
