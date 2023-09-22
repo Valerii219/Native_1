@@ -17,10 +17,8 @@ export default function App() {
     <MainStack.Navigator initialRouteName="Login">
       <MainStack.Screen name="Login" component={LoginScreen}/>
       <MainStack.Screen name="Registration" component={RegistrationScreens}/>
-      {/* <LoginScreen/>
-      <RegistrationScreens /> */}
+
       <StatusBar style="auto" />
-   
     </MainStack.Navigator>
     </NavigationContainer>
      </View>
