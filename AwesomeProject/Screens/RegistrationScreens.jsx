@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   inputs: {
     backgroundColor: "#e8e8e8",
     marginBottom: 16,
-    width: 343,
+    minWidth: '90vw',
     height: 50,
     borderRadius: 8,
     placeholder: "green",
@@ -132,8 +132,8 @@ const styles = StyleSheet.create({
   
 
   button: {
-    width: 343,
-    height: 51,
+    minWidth: '90%',
+    height: '6vh',
     backgroundColor: "#ff6c00",
     borderRadius: 100,
   },

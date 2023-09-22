@@ -11,12 +11,20 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-  
+  Alert,
 } from "react-native";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  
+  const onLogin = () => {
+    console.log("Email:", email);
+    console.log("Password:", password);
+    setEmail(""); 
+    setPassword(""); 
+  };
   return (
     <>
       <ImageBackground
@@ -25,53 +33,49 @@ const LoginScreen = () => {
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.back}>
-        
           <View style={styles.container}>
             <Text
-              // style={{  }}
               style={styles.title}
             >
               Увійти
             </Text>
             <KeyboardAvoidingView
-                behavior={Platform.OS == "android" ? "height" : "padding"}
-              >
-                <TextInput
-                  style={[styles.inputs, styles.firstInputs]}
-                  keyboardType="default"
-                  placeholder="Адреса електроної пошти"
-                  textAlign="left"
-                  placeholderTextColor={"#bdbdbd"}
-                  value={email}
-                  onChangeText={setEmail}
-                />
-                <TextInput
-                  style={[styles.inputs, styles.lastInputs]}
-                  keyboardType="default"
-                  placeholder="Пароль"
-                  textAlign="left"
-                  placeholderTextColor={"#bdbdbd"}
-                  secureTextEntry={true}
-                  value={password}
-                  onChangeText={setPassword}
-                />
-              </KeyboardAvoidingView>
-            <TouchableOpacity style={styles.button} >
+              behavior={Platform.OS == "android" ? "height" : "padding"}
+            >
+              <TextInput
+                style={[styles.inputs, styles.firstInputs]}
+                keyboardType="default"
+                placeholder="Адреса електроної пошти"
+                textAlign="left"
+                placeholderTextColor={"#bdbdbd"}
+                value={email}
+                onChangeText={setEmail}
+              />
+              <TextInput
+                style={[styles.inputs, styles.lastInputs]}
+                keyboardType="default"
+                placeholder="Пароль"
+                textAlign="left"
+                placeholderTextColor={"#bdbdbd"}
+                secureTextEntry={true}
+                value={password}
+                onChangeText={setPassword}
+              />
+            </KeyboardAvoidingView>
+            <TouchableOpacity style={styles.button} onPress={onLogin}>
               <Text style={styles.sign}>Увійти</Text>
             </TouchableOpacity>
-            
+
             <Text style={styles.enter}>
               Немає акаунту?
-              <TouchableOpacity style={styles.isAccount} >
+              <TouchableOpacity style={styles.isAccount}>
                 <Text style={styles.enter}>Зареєструватися</Text>
               </TouchableOpacity>
             </Text>
           </View>
-          
         </View>
         </TouchableWithoutFeedback>
       </ImageBackground>
-      
     </>
   );
 };
@@ -97,21 +101,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    
-   
   },
 
   inputs: {
     backgroundColor: "#e8e8e8",
     marginBottom: 16,
-    width: 343,
-    height: 50,
+    minWidth: "90vw",
+    height: "6vh",
     borderRadius: 8,
     placeholder: "green",
     padding: 16,
   },
   firstInputs: {
-
     marginTop: 32,
   },
   lastInputs: {
@@ -120,11 +121,11 @@ const styles = StyleSheet.create({
   title: {
     color: "#212121",
     fontFamily: "Roboto-Medium",
-    fontSize: 30
+    fontSize: 30,
   },
   button: {
-    width: 343,
-    height: 51,
+    minWidth: "90%",
+    height: "10%",
     backgroundColor: "#ff6c00",
     borderRadius: 100,
   },
@@ -135,18 +136,16 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     marginTop: 15,
   },
-  isAccount:{
-marginTop:16,
- marginLeft:4,
+  isAccount: {
+    marginTop: 16,
+    marginLeft: 4,
   },
-  enter:{
+  enter: {
     fontFamily: "Roboto-Regular",
     fontSize: 16,
-    color:'#1B4371',
-    marginTop:16,
-   
+    color: "#1B4371",
+    marginTop: 16,
   },
 });
 
 export default LoginScreen;
-
