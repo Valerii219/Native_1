@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 
 import {
@@ -15,6 +16,8 @@ import {
 } from "react-native";
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -68,7 +71,7 @@ const LoginScreen = () => {
 
             <Text style={styles.enter}>
               Немає акаунту?
-              <TouchableOpacity style={styles.isAccount}>
+              <TouchableOpacity style={styles.isAccount} onPress={() => navigation.navigate("Login")}>
                 <Text style={styles.enter}>Зареєструватися</Text>
               </TouchableOpacity>
             </Text>
