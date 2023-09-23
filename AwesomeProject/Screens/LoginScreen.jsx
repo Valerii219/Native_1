@@ -12,7 +12,6 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-  Alert,
 } from "react-native";
 
 const LoginScreen = () => {
@@ -71,7 +70,7 @@ const LoginScreen = () => {
 
             <Text style={styles.enter}>
               Немає акаунту?
-              <TouchableOpacity style={styles.isAccount} onPress={() => navigation.navigate("Login")}>
+              <TouchableOpacity style={styles.isAccount} onPress={() => navigation.navigate("Registration")}>
                 <Text style={styles.enter}>Зареєструватися</Text>
               </TouchableOpacity>
             </Text>
@@ -125,6 +124,8 @@ const styles = StyleSheet.create({
     color: "#212121",
     fontFamily: "Roboto-Medium",
     fontSize: 30,
+    marginTop:32,
+    
   },
   button: {
     minWidth: "90%",
