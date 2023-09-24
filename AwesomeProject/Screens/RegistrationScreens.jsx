@@ -35,7 +35,7 @@ const RegistrationScreens = () => {
         style={styles.imageBackground}
       >
         <View style={styles.back}>
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
             <View style={styles.container}>
               <Text styles={styles.title}>Реєстрація</Text>
               <KeyboardAvoidingView
@@ -83,7 +83,7 @@ const RegistrationScreens = () => {
                 </TouchableOpacity>
               </Text>
             </View>
-          </TouchableWithoutFeedback>
+          {/* </TouchableWithoutFeedback> */}
         </View>
 
         <View style={styles.photo}>

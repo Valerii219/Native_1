@@ -26,6 +26,8 @@ const LoginScreen = () => {
     console.log("Password:", password);
     setEmail(""); 
     setPassword(""); 
+
+    navigation.navigate("Home");
   };
   return (
     <>
@@ -33,7 +35,7 @@ const LoginScreen = () => {
         source={require("../Image/bgImage.jpg")}
         style={styles.imageBackground}
       >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
         <View style={styles.back}>
           <View style={styles.container}>
             <Text
@@ -76,7 +78,7 @@ const LoginScreen = () => {
             </Text>
           </View>
         </View>
-        </TouchableWithoutFeedback>
+        {/* </TouchableWithoutFeedback> */}
       </ImageBackground>
     </>
   );
