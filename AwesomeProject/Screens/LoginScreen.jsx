@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 25,
     zIndex: 100,
     overflow: "hidden",
+    
   },
   container: {
     flex: 1,
