@@ -6,9 +6,11 @@ export default function CreatePostsScreen() {
     return (
       <View style={ styles.container }>
         <View style={styles.back}><View style={styles.elipse}><Ionicons name="camera-outline" size={24} color="#bdbdbd" /></View></View>
+        
+        <View style={styles.inputsView}>
         <Text style={styles.text}>Завантажте фото</Text>
         <TextInput
-                style={styles.inputs}
+                style={[styles.inputs, styles.firstInputs]}
                 
                 placeholder="Назва"
                 textAlign="left"
@@ -25,15 +27,17 @@ export default function CreatePostsScreen() {
               <TouchableOpacity style={styles.button} >
                 <Text style={styles.enter}>Опублікувати</Text>
               </TouchableOpacity>
+        </View>
+        
       </View>
     );
   }
 
   const styles = StyleSheet.create({
     container: {
-        // flex: 1, 
-        // justifyContent: "center", 
-        // alignItems: "center"
+        flex: 1, 
+        justifyContent: "center", 
+        alignItems: "center"
        
       },
     back: {
@@ -57,6 +61,17 @@ export default function CreatePostsScreen() {
         alignItems: "center", 
         justifyContent: "center", 
       },
+      inputsView:{
+        flex:1,
+        flexDirection:"column",
+        justifyContent:"flex-end",
+        bottom:111,
+        
+      },
+      firstInputs:{
+        marginBottom:16
+      } ,
+
       inputs: {
         backgroundColor: "#e8e8e8",
         minWidth: "90vw",
@@ -64,7 +79,7 @@ export default function CreatePostsScreen() {
         borderRadius: 8,
         placeholder: "green",
         padding: 16,
-        // marginTop:32,
+        
       },
       enter: {
         fontFamily: "Roboto-Regular",
@@ -82,8 +97,8 @@ export default function CreatePostsScreen() {
         // justifyContent: "center", 
 
       },
-    //   text:{
-        
-    //   }
-    
-  });
+      text:{
+        marginBottom:32,
+      }
+  }
+  )

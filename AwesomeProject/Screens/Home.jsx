@@ -15,26 +15,28 @@ function PostsScreen() {
   );
 }
 
+
 const Tabs = createBottomTabNavigator();
 
 const Home = () => {
     const navigation = useNavigation();
+    
   return (
     <Tabs.Navigator
-    // screenOptions={({ route }) => ({
-    //   tabBarIcon: ({ focused, color, size }) => {
-    //     let iconName;
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
 
-    //     if (route.name === "PostsScreen") {
-    //       iconName = focused
-    //         ? "ios-grid-outline"
-    //         : "ios-information-circle-outline";
-    //     } else if (route.name === "ProfileScreen") {
-    //       iconName = focused ? "ios-list-box" : "ios-list";
-    //     }
-    //     return <Ionicons name={iconName} size={size} color={color} />;
-    //   },
-    // })}
+        if (route.name === "PostsScreen") {
+          iconName = focused
+            ? "ios-grid-outline"
+            : "ios-information-circle-outline";
+        } else if (route.name === "ProfileScreen") {
+          iconName = focused ? "ios-list-box" : "ios-list";
+        }
+        return <Ionicons name={iconName} size={size} color={color} />;
+      },
+    })}
       tabBarOptions={{
         activeTintColor: "blue",
         inactiveTintColor: "gray",
@@ -47,27 +49,35 @@ const Home = () => {
         <Ionicons name="log-out-outline" size={24} color="#bdbdbd" />
       </TouchableOpacity>
              
-            ), tabBarIcon: ({ color, size }) => (
+            ),
+             tabBarIcon: ({ color, size }) => (
               <Ionicons name="ios-grid-outline" size={size} color={color} />
-            ), tabBarLabel:"",}}/>
+            ), 
+            tabBarLabel:"",}}/>
 
 
 
        <Tabs.Screen
         name="CreatePostsScreen"
         component={CreatePostsScreen}
-        options={{headerTitle:"Створити публікацію",headerTitleAlign: "center", headerLeft: () => (
-          <TouchableOpacity  onPress={() => navigation.navigate("PostsScreen")}>
-          <Ionicons name="arrow-back-outline" size={24} color="#212121" />
-        </TouchableOpacity>
-               
-              ),
-          tabBarIcon: ({  size }) => (<View style={styles.forIcon}><Ionicons name="ios-add" size={size} color="white" /></View>
-          
-          ), tabBarLabel:"",
-          
-        }}
+        options={({ navigation }) => ({
+          headerTitle: "Створити публікацію",
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("PostsScreen")}>
+              <Ionicons name="arrow-back-outline" size={24} color="#212121" />
+            </TouchableOpacity>
+          ),
+          tabBarIcon: ({ size }) => (
+            <View style={styles.forIcon}>
+              <Ionicons name="ios-add" size={size} color="white" />
+            </View>
+          ),
+          tabBarLabel: "",
+          tabBarVisible: false, // Приховує таб-бар на цьому екрані
+        })}
       />
+
 
 
       <Tabs.Screen name="ProfileScreen" component={ProfileScreen} 
