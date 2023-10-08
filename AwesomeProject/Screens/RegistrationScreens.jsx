@@ -185,7 +185,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     color: "orange",
     fontSize: 24,
-    transform: [{ translateX: "22%" }, { translateY: "-22%" }],
+    top:-8,
+    left:3.5,
   },
 });
 
