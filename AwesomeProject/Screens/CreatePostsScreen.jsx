@@ -5,17 +5,33 @@ import { TextInput } from "react-native-gesture-handler";
 import { Camera } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import { useEffect, useState } from "react";
+import * as Location from "expo-location";
+import MapView from "react-native-maps";
+
 export default function CreatePostsScreen() {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [location, setLocation] = useState(null);
 
-  useEffect(() => {
+   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestPermissionsAsync();
       await MediaLibrary.requestPermissionsAsync();
 
       setHasPermission(status === "granted");
+
+      let { status: locationStatus } = await Location.requestPermissionsAsync();
+      if (locationStatus !== "granted") {
+        console.log("Permission to access location was denied");
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      const coords = {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      };
+      setLocation(coords);
     })();
   }, []);
 
@@ -25,6 +41,10 @@ export default function CreatePostsScreen() {
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
+ 
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.back}>
@@ -45,6 +65,26 @@ export default function CreatePostsScreen() {
               );
             }}
           >
+             <MapView
+        // provider={PROVIDER_GOOGLE}
+        style={styles.mapStyle}
+        
+        region={{
+          ...location,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        mapType="standard"
+        minZoomLevel={15}
+        onMapReady={() => console.log("Map is ready")}
+        onRegionChange={() => console.log("Region change")}
+        showsUserLocation={true}
+      >
+        {/* {location && (
+        // <Marker title="I am here" coordinate={location} description="Hello" />
+      )} */}
+      
+      </MapView>
           
           </TouchableOpacity>
           <TouchableOpacity
@@ -54,6 +94,7 @@ export default function CreatePostsScreen() {
                 const { uri } = await cameraRef.takePictureAsync();
                 await MediaLibrary.createAssetAsync(uri);
               }
+              
             }}
           >
             <View style={styles.takePhotoOut}>
@@ -135,7 +176,7 @@ const styles = StyleSheet.create({
 
   inputs: {
     backgroundColor: "#e8e8e8",
-    minWidth: "90vw",
+    minWidth: 90,
     height: "6vh",
     borderRadius: 8,
     placeholder: "green",
@@ -168,7 +209,7 @@ const styles = StyleSheet.create({
 
   takePhotoOut: {
     height: 50,
-    width: 400,
+    width: 200,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

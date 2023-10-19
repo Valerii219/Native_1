@@ -21,8 +21,8 @@ export default function App() {
     <MainStack.Navigator initialRouteName="Home">
       <MainStack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
       <MainStack.Screen name="Registration" component={RegistrationScreens} options={{ headerShown: false }}/>
-      {/* <MainStack.Screen name="CommentsScreen" component={CommentsScreen}  />
-      <MainStack.Screen name="MapScreen" component={MapScreen} /> */}
+      {/* <MainStack.Screen name="CommentsScreen" component={CommentsScreen}  /> */}
+       {/* <MainStack.Screen name="MapScreen" component={MapScreen} /> */}
       <MainStack.Screen name="Home" component={Home} options={{ headerShown: false }}  />
 
     </MainStack.Navigator>
@@ -38,3 +38,6 @@ const styles = StyleSheet.create({
   },
 });
 
+
+
+// key=API_KEY AIzaSyA6QHdApaxhG8NLA6lrhdrvaElNqYyvdqk

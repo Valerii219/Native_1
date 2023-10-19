@@ -18,7 +18,8 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "android.config.googleMaps.apiKey":"AIzaSyDPTHpvMln-5u9R8L7flgiW0eAavo-BAT4"
       },
       "softwareKeyboardLayoutMode": "pan"
     },
